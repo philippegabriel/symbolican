@@ -1,0 +1,41 @@
+#summary Description of cloudrun
+
+= Introduction =
+This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], with:
+ * [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]: a UI-less build of Google Chrome, 
+ * [http://code.google.com/p/ouspg/wiki/Radamsa radamsa]: A fuzzer from Oulu University Secure Programming Group (OUSPG) 
+ * samples, either Cascading Style Sheet, or png
+
+Once setup, the instance runs DumpRenderTree forever (or until stopped :) over a set of fuzzed sample files.
+
+When a crash is detected, a message is sent to a configurable email address.
+
+The performance of the instance (number of test runs) can be monitored on the [http://aws.amazon.com/console/ Amazon management console]
+
+
+= AWS EC2 instance Setup =
+
+The project consists in a collection of Python, shell scripts, [http://upstart.ubuntu.com/cookbook Linux upstart jobs] and configuration files.
+
+These files are bundled into a multi-MIME part file, that serves as initialisation data to your Amazon EC2 instance.
+
+This is done by the [https://help.ubuntu.com/community/CloudInit CloudInit] utility.
+
+When an EC2 instance starts up, that has the CloudInit package pre-installed (as is the case with all the [https://help.ubuntu.com/community/UEC/Images Ubuntu EC2 images]), this initialisation file is parsed and as a result:
+ * Extra packages are installed
+ * scripts and config files are extracted and installed at the relevant places
+ * upstart jobs are scheduled
+
+This allows for an entirely automated and consistent setup 
+
+= Running the AWS EC2 instance =
+That's the easiest part, since the setup is entirely automated, there is naught to do apart from checking the mail address you provided as your [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html SNS endpoint]
+
+You might also want to login the [http://aws.amazon.com/console/ Amazon management console] to monitor the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html graph showing the progress of the test runs]
+
+= Environment supported =
+This is Linux only, Windows is not planned to be supported, sorry.
+The project dependencies are:
+ * [https://help.ubuntu.com/community/CloudInit CloudInit]
+ * [http://boto.readthedocs.org/en/latest/index.html boto library] version >= 2.0
+ * The amount of disk and memory required is fairly small and fits comfortably into the smallest AWS machines (i.e. [http://aws.amazon.com/ec2/instance-types/ micro-instances])
