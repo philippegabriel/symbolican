@@ -42,3 +42,17 @@ The project dependencies are:
  * an account named 'ubuntu' setup
 These requirements naturally call for an [https://help.ubuntu.com/community/UEC/Images ubuntu AMI]
 Since we need a boto library >=2.0, this limits our choice to at least an 11.10 ubuntu [http://cloud.ubuntu.com/ami/ ubuntu AMI], in any region, either 32 or 64 bits.
+
+= Project setup =
+The end result is a gzip multi-MIME part CloudInit file.
+However, before this can be created succesfully, the template config/.boto  [http://code.google.com/p/boto/wiki/BotoConfig config file] needs to be edited, to add your [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials] and your [http://docs.amazonwebservices.com/sns/latest/gsg/CreateTopic.html SNS topic ARN]
+
+Note for the cautious: We understand that pasting credentials in a text file somewhere sounds fairly alarming :)
+We recommend that within your AWS account you create a special "cloudrun" account, with the [http://docs.amazonwebservices.com/IAM/latest/GettingStartedGuide/Welcome.html?r=1527 AWS Identity and Access Management service].
+Limit this account privilege to: S3 retrieve, SNS Publish, Cloudwatch Putmetrics
+See http://www.elastician.com/2010_09_01_archive.html for details 
+
+If still not convinced, well, get in touch, if you ask nicely, I can make a Chromium build publicly available, so you can run, without providing any credentials at all.
+
+
+More later...
