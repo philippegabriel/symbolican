@@ -39,3 +39,6 @@ The project dependencies are:
  * [https://help.ubuntu.com/community/CloudInit CloudInit]
  * [http://boto.readthedocs.org/en/latest/index.html boto library] version >= 2.0
  * The amount of disk and memory required is fairly small and fits comfortably into the smallest AWS machines (i.e. [http://aws.amazon.com/ec2/instance-types/ micro-instances])
+ * an account named 'ubuntu' setup
+These requirements naturally call for an [https://help.ubuntu.com/community/UEC/Images ubuntu AMI]
+Since we need a boto library >=2.0, this limits our choice to at least an 11.10 ubuntu [http://cloud.ubuntu.com/ami/ ubuntu AMI], in any region, either 32 or 64 bits.
