@@ -1,0 +1,10 @@
+# 
+# Publish metric on AWS Cloudwatch
+# m h  dom mon dow   command
+PATH=/bin:/usr/bin:/usr/local/bin:$HOME
+*/5 * * * * putmetricIterN.sh > /tmp/crontab.log
+
+
+
+
+ 
