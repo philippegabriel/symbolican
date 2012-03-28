@@ -42,6 +42,7 @@ The project dependencies are:
  * an account named 'ubuntu' setup
 These requirements naturally call for an [https://help.ubuntu.com/community/UEC/Images ubuntu AMI]
 Since we need a boto library >=2.0, this limits our choice to at least an 11.10 ubuntu [http://cloud.ubuntu.com/ami/ ubuntu AMI].
+
 You can run in any region, 32 or 64 bits, ebs or instance store are both supported.
 These are the 4 instances I used for all of my testing.
 ||*Zone*||*Name*||*Arch*||*EBS*||*Release*||*AMI-ID*||
@@ -69,9 +70,7 @@ at the root of the cloudrun project is a Makefile, that has 4 targets:
 ec2png, ec2css, kvmpng, kvmcss
 
 to generate the png fuzzing test initialisation file, simply type :
-{{{
-make ec2png
-}}}
+`make ec2png`
 This will create a: *userdata-cloud-init.ec2png.txt.gz* file, that you can provide as user data to your EC2 instance.
 
 =Checking that the AWS EC2 instance started OK=
