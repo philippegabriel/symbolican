@@ -270,7 +270,7 @@ It should run easily on a debian instance (not tested yet) or !RedHat, CentOS.
  * cloud-init is the Ubuntu package that handles early initialization of a cloud instance. https://help.ubuntu.com/community/CloudInit
  * Ubuntu cloud portal http://cloud.ubuntu.com/ami/
  * Ubuntu Cloud Guest images on Local Hypervisor https://help.ubuntu.com/community/UEC/Images
- * http://www.elastician.com/
+ * boto library author blog http://www.elastician.com/
  * Ubuntu on Amazon EC2 http://alestic.com/
  * debian AWS EC2 images http://wiki.debian.org/Cloud/AmazonEC2Image#preview
  * Linux upstart cookbook http://upstart.ubuntu.com/cookbook/
