@@ -189,9 +189,13 @@ I endeavour to keep the DumpRenderTree at this location reasonably current, i.e.
 *Note:* Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release DumpRenderTree: i.e.
 
 Setup gyp params:
-{{{ ./build/gyp_chromium -Doptimise=speed }}}
+{{{ 
+./build/gyp_chromium -Doptimise=speed 
+}}}
 Make command:
-{{{make -j16 BUILDTYPE=Release DumpRenderTree}}}
+{{{
+make -j16 BUILDTYPE=Release DumpRenderTree
+}}}
 
 The build archive file contains a manifest with full details.
 =FAQs=
