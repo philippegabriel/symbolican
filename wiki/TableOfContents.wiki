@@ -1,8 +1,9 @@
 * [cloudrun Introduction]
-    * [ArticlesXSS Web security]
-    * [ArticlesDom DOM manipulation]
-    * [ArticlesStyle CSS and style]
-    * [ArticlesTips Tips and tricks]
-  * [DOMReference DOM reference]
-  * [HTMLElements HTML reference]
-  * [CSSReference CSS reference]
+* [cloudrun AWS EC2 instance Setup]
+* [cloudrun Environment supported]
+* [cloudrun Project setup]
+Generating the AWS EC2 initialisation file
+Checking the AWS EC2 instance started OK
+Diagnosing failure
+running with micro instances
+
