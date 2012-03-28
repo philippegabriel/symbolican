@@ -70,7 +70,7 @@ at the root of the cloudrun project is a Makefile, that has 4 targets:
 ec2png, ec2css, kvmpng, kvmcss
 
 to generate the png fuzzing test initialisation file, simply type :
-`make ec2png`
+ make ec2png
 This will create a: *userdata-cloud-init.ec2png.txt.gz* file, that you can provide as user data to your EC2 instance.
 
 =Checking that the AWS EC2 instance started OK=
