@@ -49,7 +49,7 @@ However, before this can be created succesfully, the template config/.boto  [htt
 *Note for the cautious:* We understand that pasting credentials in a text file sounds fairly alarming :)
 As explained [http://www.elastician.com/2010_09_01_archive.html in this nice posting], we recommend that you create a special "cloudrun" account, with the [http://docs.amazonwebservices.com/IAM/latest/GettingStartedGuide/Welcome.html?r=1527 AWS Identity and Access Management service].
 
-Limit this account privilege to: s3:!Get, sns:!Publish, cloudwatch:!PutMetricData, using the  [http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingPolicies.html AWS IAM Policy generator].
+Limit this account privilege to: s3:Get, sns:Publish, cloudwatch:!PutMetricData, using the  [http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingPolicies.html AWS IAM Policy generator].
 You can of course be even more restrictive and qualify the specific resource to which the permissions apply, i.e. the ARN SNS topic, Cloudwatch metric and the S3 Bucket & object.
 
 Doing this will rule out a third party using your credentials to do expensive things, like launching extra instances.
@@ -68,7 +68,7 @@ This will create a: *userdata-cloud-init.ec2png.txt.gz* file, that you can provi
 
 =Checking that the AWS EC2 instance started OK=
 Get the AWS EC2 instance "System Log"
-This will contain a lot of details, mainly the list of DumpRenderTree packages that were fetched.
+This will contain a lot of details, mainly the list of !DumpRenderTree packages that were fetched.
 Scroll down to the last entries in the log, a succesful startup will show lines, like:
 {{{
 ==============================
@@ -98,3 +98,58 @@ bootstrap.sh downloads !DumpRenderTree, radamsa and the relevant (png or css) sa
 Once bootstrap terminates succesfuly, the run.conf upstart job calls run.sh, which starts fuzzing and running !DumpRenderTree forever.
 
 Note: a 3rd upstart job: Xvfbd.conf starts [http://en.wikipedia.org/wiki/Xvfb Xvfb], which is needed by !DumpRenderTree.
+=Diagnosing failure=
+The AWS EC2 System Log should in most case provide enough information to diagnose a problem.
+Otherwise please get in touch.
+=Note on running with micro instances=
+When running on micro instance in the eu-west region, I hit quite often the following [https://bugs.launchpad.net/ubuntu/+source/linux-ec2/+bug/634487 bug].
+The bottom line of this long thread, is that there is an hypervisor defect in the EC2 environment.
+The following bug manifests itself by the following trace on the System Log
+{{{
+
+[ 2029.678337] 1 multicall(s) failed: cpu 0
+[ 2029.678458] 1 multicall(s) failed: cpu 0
+[ 2029.678578] 1 multicall(s) failed: cpu 0
+[ 2029.678702] 1 multicall(s) failed: cpu 0
+[ 2029.678822] 1 multicall(s) failed: cpu 0
+[ 2029.678943] 1 multicall(s) failed: cpu 0
+[ 2029.679063] 1 multicall(s) failed: cpu 0
+[ 2029.679182] 1 multicall(s) failed: [ 2031.184425]  [<c01070d6>] ? __raw_callee_save_xen_save_fl+0x6[ 2031.184447]  [<c01b89f6>] ? rcu_enter_nohz+0x36/0xc0
+[ 2031kf536ba5a52d[ 2033.197[ 2036.204767] init: rsyslog main process ended, respawning
+}}}
+Once you see that the instance is dead.
+
+The workaround, as explained in the defect report are to run a 64 bit instance (tested) or run in the us-west-2 region (untested yet)
+
+=Login onto your instance=
+If you log into your instance, (as user 'ubuntu'), you'll see the following scripts on your home directory:
+{{{
+bootstrap.sh
+run.sh
+check.sh
+}}}
+the bootstrap job should be stopped and the run job should be running, you can check that with a:
+{{{
+sudo initctl list
+}}}
+and you can check how many test runs have been executed since start
+{{{
+cat /tmp/iterN
+}}}
+You can take over manually, first stop the run job:
+{{{
+sudo stop run
+}}}
+then you can manually re-run bootstrap.sh and run.sh.
+
+run.sh comes with a few parameters, a useful one is:
+{{{
+run.sh loop 10 log
+}}}
+this will run 10 tests and generate a png image (in the /tmp directory) of the rendered page, to satisfy you that !DumpRenderTree works ok. 
+
+You can also check various library functions, using check.sh
+
+Also, many options are configurable via /etc/taskenv.sh
+
+=Running in a kvm environment=
