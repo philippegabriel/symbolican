@@ -75,7 +75,7 @@ to generate the png fuzzing test initialisation file, simply type :
 }}}
 This will create a: *userdata-cloud-init.ec2png.txt.gz* file, that you can provide as user data to your EC2 instance.
 
-=Checking that the AWS EC2 instance started OK=
+=Checking if the AWS EC2 instance started OK=
 In the [http://aws.amazon.com/console/ AWS Management Console], get the "System Log" for your instance.
 This will contain a lot of details, starting with the list of extra packages that were fetched.
 Scroll down to the last entries in the log, a succesful startup will show lines, like:
@@ -152,7 +152,7 @@ Once you see that the instance is dead.
 
 The workaround, as explained in the defect report are to run a 64 bit instance (tested) or run in the us-west-2 region (untested yet)
 
-=Login to your instance=
+=Login to AWS EC2 instance=
 If you log into your instance, (as user 'ubuntu'), you'll see the following scripts on your home directory:
 {{{
 bootstrap.sh
