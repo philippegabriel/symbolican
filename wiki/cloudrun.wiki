@@ -1,5 +1,6 @@
 #summary Description of cloudrun
-
+#sidebar TableOfContents
+<wiki:toc max_depth="1" />
 = Introduction =
 This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], with:
  * [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]: a UI-less build of [https://www.google.com/chrome Google Chrome], 
@@ -13,7 +14,6 @@ Once setup, the instance executes forever (or more likely until stopped)the foll
 
 The performance of the instance (number of test runs) can be monitored on the [http://aws.amazon.com/console/ Amazon management console] via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html AWS Cloudwatch service]
 
-<wiki:toc max_depth="1" />
 
 = AWS EC2 instance Setup =
 
