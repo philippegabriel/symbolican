@@ -45,11 +45,10 @@ Since we need a boto library >=2.0, this limits our choice to at least an 11.10 
 You can run in any region, 32 or 64 bits, ebs or instance store are both supported.
 These are the 4 instances I used for all of my testing.
 ||*Zone*||*Name*||*Arch*||*EBS*||*Release*||*AMI-ID*||
-||eu-west-1||oneiric||i386||ebs||20120222||ami-8d5069f9||
-||eu-west-1||oneiric||i386||instance-store||20120222||ami-b15069c5||
-||eu-west-1||oneiric||amd64||ebs||20120222||ami-895069fd||
-||eu-west-1||oneiric||amd64||instance-store||20120222||ami-af5069db||
-
+||eu-west-1||oneiric||amd64||ebs||20120222||[https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-895069fd ami-895069fd]||
+||eu-west-1||oneiric||i386||ebs||20120222||[https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-8d5069f9 ami-8d5069f9]||
+||eu-west-1||oneiric||amd64||instance-store||20120222||[https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-af5069db ami-af5069db]||
+||eu-west-1||oneiric||i386||instance-store||20120222||[https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-b15069c5 ami-b15069c5]||
 
 = Project setup =
 The end result is a gzip multi-MIME part cloudinit file.
