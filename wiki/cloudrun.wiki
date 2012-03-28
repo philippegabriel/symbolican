@@ -260,7 +260,7 @@ That should work, I tested that early on. But I don't plan to support this requi
 ===Is this Ubuntu specific===
 There are a few assumption about a 'ubuntu' account existing on the instance, grep 'ubuntu' to find them.
 Other than that, cloudinit needs to be installed on the instance.
-It should run easily on a debian instance (not tested yet) or RedHat, CentOS.
+It should run easily on a debian instance (not tested yet) or !RedHat, CentOS.
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
  * Getting Started with Amazon EC2 http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/Welcome.html?r=7010
