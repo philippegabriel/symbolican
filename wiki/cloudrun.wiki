@@ -179,6 +179,21 @@ You can start the kvm instance with
 {{{
 make -f kvm.mk
 }}}
+=!DumpRenderTree builds=
+These are stored in AWS S3, their location is defined in the "taskenv.sh" files, there is a 32 and 64 bits variant.
+The bucket that contains them is only visible to identified account.
+Furthermore, the bucket is set to: [http://docs.amazonwebservices.com/AmazonDevPay/latest/DevPayDeveloperGuide/S3RequesterPays.html "requester-pay"], which means that the download is billed to the downloader (you), not the S3 bucket owner (me).
+*Note:* It does not matter in that case, as Amazon offers up to 15G per month as part of their [http://aws.amazon.com/ec2/pricing/ Free Tier], but I wanted the code to be as future proof as possible and cope with higher level of use.
+
+I endeavour to keep the DumpRenderTree at this location reasonably current, i.e. regenerated every month, depending on the level of interest.
+*Note:* Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release DumpRenderTree: i.e.
+
+Setup gyp params:
+{{{ ./build/gyp_chromium -Doptimise=speed }}}
+Make command:
+{{{make -j16 BUILDTYPE=Release DumpRenderTree}}}
+
+The build archive file contains a manifest with full details.
 =FAQs=
 ===Why did you do this?===
 I have a long lasting interest in the matter, my previous job at Symbian and then Nokia, was deploying large scale dynamic and static analysis solutions, that involved evaluating OSS and commercial product and then deploying them automatically and consistently to large teams.
