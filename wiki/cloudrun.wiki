@@ -230,7 +230,7 @@ I'm publishing the code, in the hope that it helps others who want to get starte
 ===I am interested in using AWS EC2, but my use case is unrelated to testing===
 I believe that this code constitutes a lightweight, yet useful framework that can be repurposed with minimal effort and save you a lot of time.
 All the scripts in ./libs are totally generic an could be used as is.
-a cloudrun "task" is a set of bootstrap.h, run.sh and taskenv.sh.
+A cloudrun "task" is a set of bootstrap.h, run.sh and taskenv.sh.
 
 You just need to generate these 3 files according to your specifics and add them as target to the Makefile.
 ===I know nothing about this cloud computing thing? how does it all work?===
@@ -246,7 +246,10 @@ That should work, I tested that early on. But I don't plan to support this requi
  # I prefer to keep track of my configurations as version controlled initialisation files, rather than ebs volumes
  # The startup in most case under 1 minute, so booting from an ebs volume doesn't save me anything.
  # I prefer to use instance store, because it is cheaper
-
+===Is this Ubuntu specific===
+There are a few assumption about a 'ubuntu' account exists on the instance, grep for 'ubuntu' to find them.
+Other than that, cloudinit needs to be installed on the instance.
+It should run easily on a debian instance (not tested yet) or RedHat, CentOS.
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
  * Getting Started with Amazon EC2 http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/Welcome.html?r=7010
