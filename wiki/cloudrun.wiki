@@ -163,8 +163,11 @@ or
 {{{
 make kvmcss
 }}}
-some customisation is needed for this, see the kvm directory.
-
+some customisation is needed for this, see scripts:
+{{{
+kvm/boothook.sh
+kvm/cloudenv.sh
+}}}
 You can start the kvm instance with 
 {{{
 make -f kvm.mk
