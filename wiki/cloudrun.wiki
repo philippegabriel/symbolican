@@ -153,3 +153,19 @@ You can also check various library functions, using check.sh
 Also, many options are configurable via /etc/taskenv.sh
 
 =Running in a kvm environment=
+It is possible to [https://help.ubuntu.com/community/UEC/Images#Ubuntu_Cloud_Guest_images_on_Local_Hypervisor_Natty_onward run ubuntu EC2 AMI on kvm], this actually saved me a lot of time, during development.
+
+You can generate an initialisation file for kvm, with:
+{{{
+make kvmpng
+}}}
+or
+{{{
+make kvmcss
+}}}
+some customisation is needed for this, see the kvm directory.
+
+You can start the kvm instance with 
+{{{
+make -f kvm.mk
+}}}
