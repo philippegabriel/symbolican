@@ -49,7 +49,7 @@ However, before this can be created succesfully, the template config/.boto  [htt
 *Note for the cautious:* We understand that pasting credentials in a text file sounds fairly alarming :)
 As explained [http://www.elastician.com/2010_09_01_archive.html in this nice posting], we recommend that you create a special "cloudrun" account, with the [http://docs.amazonwebservices.com/IAM/latest/GettingStartedGuide/Welcome.html?r=1527 AWS Identity and Access Management service].
 
-Limit this account privilege to: s3:Get, sns:Publish, cloudwatch:PutMetricData, using the  [http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingPolicies.html AWS IAM Policy generator].
+Limit this account privilege to: s3:!Get, sns:!Publish, cloudwatch:!PutMetricData, using the  [http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingPolicies.html AWS IAM Policy generator].
 You can of course be even more restrictive and qualify the specific resource to which the permissions apply, i.e. the ARN SNS topic, Cloudwatch metric and the S3 Bucket & object.
 
 Doing this will rule out a third party using your credentials to do expensive things, like launching extra instances.
@@ -93,7 +93,7 @@ Once cloudinit has finished, it hands other to the cloudrun scripts.
 Specifically this is accomplished by generating the "cloud-final" event.
 The cloudrun upstart job: bootstrap.conf then starts, which in turns calls the bootstrap.sh script.
 
-bootstrap.sh downloads DumpRenderTree, radamsa and the relevant (png or css) samples, then unpack the binaries and tests that they are configured ok.
+bootstrap.sh downloads !DumpRenderTree, radamsa and the relevant (png or css) samples, then unpack the binaries and tests that they are configured ok.
 
 Once bootstrap terminates succesfuly, the run.conf upstart job calls run.sh, which starts fuzzing and running !DumpRenderTree forever.
 
