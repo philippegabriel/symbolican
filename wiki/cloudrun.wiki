@@ -9,7 +9,7 @@ This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], 
 Once setup, the instance executes forever (or more likely until stopped)the following sequence:
  * Generate a batch of fuzzed files (with [http://code.google.com/p/ouspg/wiki/Radamsa radamsa])
  * Renders html page(s) embedding the fuzzed files with [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]
- * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html AWS SNS configurable address]
+ * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html AWS SNS configurable address], with enough details (i.e. the radamsa "seed") to recreate the crash.
 
 The performance of the instance (number of test runs) can be monitored on the [http://aws.amazon.com/console/ Amazon management console] via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html AWS Cloudwatch service]
 
@@ -32,6 +32,7 @@ That's the easiest part, since the setup is entirely automated, there is nothing
 
 You might also want to log into the [http://aws.amazon.com/console/ Amazon management console] to monitor the "cloudrun" metric, displayed as a  [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html graph showing the progress of the test runs]
 
+There should never be any need to actually login to your instance, unless of course you are curious and you want to poke around :) 
 = Environment supported =
 This is Linux only.
 The project dependencies are:
