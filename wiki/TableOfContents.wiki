@@ -1,5 +1,5 @@
- * [Introduction]
- * [AWS EC2 instance Setup]
+ * [cloudrun Introduction]
+ * [cloudrun AWS_EC2_instance_Setup]
  * [cloudrun Environment supported]
  * [cloudrun Project setup]
  * [cloudrun Generating the AWS EC2 initialisation file]
