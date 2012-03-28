@@ -183,10 +183,11 @@ make -f kvm.mk
 These are stored in AWS S3, their location is defined in the "taskenv.sh" files, there is a 32 and 64 bits variant.
 The bucket that contains them is only visible to identified account.
 Furthermore, the bucket is set to: [http://docs.amazonwebservices.com/AmazonDevPay/latest/DevPayDeveloperGuide/S3RequesterPays.html "requester-pay"], which means that the download is billed to the downloader (you), not the S3 bucket owner (me).
+
 *Note:* It does not matter in that case, as Amazon offers up to 15G per month as part of their [http://aws.amazon.com/ec2/pricing/ Free Tier], but I wanted the code to be as future proof as possible and cope with higher level of use.
 
-I endeavour to keep the DumpRenderTree at this location reasonably current, i.e. regenerated every month, depending on the level of interest.
-*Note:* Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release DumpRenderTree: i.e.
+I endeavour to keep the !DumpRenderTree at this location reasonably current, i.e. regenerated every month, depending on the level of interest.
+*Note:* Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release !DumpRenderTree: i.e.
 
 Setup gyp params:
 {{{ 
