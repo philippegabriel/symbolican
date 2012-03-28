@@ -180,19 +180,19 @@ You can start the kvm instance with
 make -f kvm.mk
 }}}
 =FAQs=
- * Why did you do this?
- I have a long lasting interest in the matter, my previous job at Symbian and then Nokia, was deploying large scale dynamic and static analysis solutions, that involved evaluating OSS and commercial product and then deploying them automatically and consistently to large teams.
- I think that cloud computing is ideal for this sort of use case and I wanted to do a proof of concept.
- I'm publishing the code, in the hope that it helps others who want to get started with EC2
- * I have interest in cloud computing, but my use case is unrelated to testing
- I believe that this code constitutes a lightweight, yet useful framework that can be repurposed with minimal effort.
- * I know nothing about this cloud computing thing? how does it all work?
- I'd suggest to start reading through the links below. Also a nice series of architecture diagrams at: http://aws.amazon.com/architecture/
-====What is this fuzzing stuff?====
+===Why did you do this?===
+I have a long lasting interest in the matter, my previous job at Symbian and then Nokia, was deploying large scale dynamic and static analysis solutions, that involved evaluating OSS and commercial product and then deploying them automatically and consistently to large teams.
+I think that cloud computing is ideal for this sort of use case and I wanted to do a proof of concept.
+I'm publishing the code, in the hope that it helps others who want to get started with EC2
+===I have interest in cloud computing, but my use case is unrelated to testing===
+I believe that this code constitutes a lightweight, yet useful framework that can be repurposed with minimal effort.
+===I know nothing about this cloud computing thing? how does it all work?===
+I'd suggest to start reading through the links below. Also a nice series of architecture diagrams at: http://aws.amazon.com/architecture/
+===What is this fuzzing stuff?===
 It is a fairly powerful testing technique, please start with the [http://en.wikipedia.org/wiki/Fuzzing wikipedia article]
 ===But there are lots of fuzzer, why chose radamsa?===
 Because, while employed by Symbian and then Nokia, I worked a lot with [http://www.codenomicon.com/ codenomicon] and their product is related to work done at [http://www.codenomicon.com/company/ OUSPG] and I have a bit of nostalgia visiting my ex-Nokia colleagues in Oulu, especially in winter :)
-===Why chosing !DumpRenderTree as a target?===
+===Why chose !DumpRenderTree as a target?===
 Mainly because OUSPG already demonstrated [http://dev.chromium.org/Home/chromium-security/hall-of-fame outstanding results] fuzzing Google chrome with radamsa. Also, I wanted binaries for which the build procedure was well documented.
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
