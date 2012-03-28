@@ -190,9 +190,9 @@ make -f kvm.mk
  I'd suggest to start reading through the links below. Also a nice series of architecture diagrams at: http://aws.amazon.com/architecture/
  * What is this fuzzing stuff?
  It is a fairly powerful testing technique, please start with the [http://en.wikipedia.org/wiki/Fuzzing wikipedia article]
- * But there are lots of fuzzer, why chose radamsa?
+ ===But there are lots of fuzzer, why chose radamsa?===
  Because, while employed by Symbian and then Nokia, I worked a lot with [http://www.codenomicon.com/ codenomicon] and their product is related to work done at [http://www.codenomicon.com/company/ OUSPG] and I have a bit of nostalgia visiting my ex-Nokia colleagues in Oulu, especially in winter :)
- * Why chosing DumpRenderTree as a target?
+===Why chosing !DumpRenderTree as a target?===
  mainly because OUSPG already demonstrated [http://dev.chromium.org/Home/chromium-security/hall-of-fame outstanding results] fuzzing Google chrome with radamsa. Also, I wanted binaries for which the build procedure was well documented.
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
