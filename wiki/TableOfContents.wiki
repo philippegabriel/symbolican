@@ -2,8 +2,12 @@
 * [cloudrun AWS EC2 instance Setup]
 * [cloudrun Environment supported]
 * [cloudrun Project setup]
-Generating the AWS EC2 initialisation file
-Checking the AWS EC2 instance started OK
-Diagnosing failure
-running with micro instances
-
+* [cloudrun Generating the AWS EC2 initialisation file]
+* [cloudrun Checking if the AWS EC2 instance started OK]
+* [cloudrun Diagnosing failure]
+* [cloudrun Note on running with micro instances]
+* [cloudrun Login to AWS EC2 instance]
+* [cloudrun Running in a kvm environment]
+* [cloudrun DumpRenderTree builds]
+* [cloudrun FAQs]
+* [cloudrun Useful Links]
