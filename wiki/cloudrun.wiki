@@ -111,7 +111,7 @@ Once bootstrap terminates succesfuly, the run.conf upstart job calls run.sh, whi
 
 Note: a 3rd upstart job: Xvfbd.conf starts [http://en.wikipedia.org/wiki/Xvfb Xvfb], which is needed by !DumpRenderTree.
 =Diagnosing failure=
-The AWS EC2 System Log should in most case provide enough information to diagnose a problem.
+The AWS EC2 System Log should provide enough information to diagnose a problem.
 {{{
 Fetching http://www.foo.com/...
 --2012-03-28 16:21:19--  http://www.foo.com/foo.tgz
@@ -131,7 +131,7 @@ In this case, the hypothetical: http://www.foo.com/foo.tgz could not be found
 
 The lines after the 404 error come from the bootstrap.conf and run.conf Upstart jobs which abort in case of error
 
-In most cases, this should be enough diagnostic info, but if you see something really odd happening, please get in touch.
+In most cases, there should be enough diagnostic info, but if you see something really odd happening, please get in touch.
 =Note on running with micro instances=
 When running on micro instance in the eu-west region, I hit quite often the following [https://bugs.launchpad.net/ubuntu/+source/linux-ec2/+bug/634487 bug].
 The bottom line of this long thread, is that there is an hypervisor defect in the EC2 environment.
