@@ -95,6 +95,6 @@ The cloudrun upstart job: bootstrap.conf then starts, which in turns calls the b
 
 bootstrap.sh downloads DumpRenderTree, radamsa and the relevant (png or css) samples, then unpack the binaries and tests that they are configured ok.
 
-Once bootstrap terminates succesfuly, the run.conf upstart job calls run.sh, which starts fuzzing and running DumpRenderTree forever.
+Once bootstrap terminates succesfuly, the run.conf upstart job calls run.sh, which starts fuzzing and running !DumpRenderTree forever.
 
-Note: a 3rd upstart job: Xvfbd.conf starts [http://en.wikipedia.org/wiki/Xvfb Xvfb], which is needed by DumpRenderTree.
+Note: a 3rd upstart job: Xvfbd.conf starts [http://en.wikipedia.org/wiki/Xvfb Xvfb], which is needed by !DumpRenderTree.
