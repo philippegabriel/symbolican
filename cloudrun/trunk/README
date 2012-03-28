@@ -1,0 +1,36 @@
+Introduction
+============
+This project creates an initialisation file for AWS EC2
+See: http://code.google.com/p/symbolican/wiki/cloudrun
+
+Creating the initialisation file
+================================
+Choice of 2 archictures: EC2 and kvm
+2 fuzz targets: CSS or png
+valid target are ec2png, ec2css, kvmpng and kvmcss
+To create the initialisation file:
+make <target>
+
+Login on the instance
+=====================
+Normally, once you login, either:
+bootstrap is running, or
+bootsrap ha sfinished and run is...running
+Check bootstrap output on the System Log.
+If you see a:
+==============================
+>>>bootstrap.sh is COMPLETE<<<
+==============================
+Then bootstrap has completed succesfuly
+you can stop whichever job is currently running.
+sudo stop bootstrap, or
+sudo stop run
+and take over manually.
+You can check some functions with: check.sh
+re-run bootstrap, or execute: run.sh manually
+
+See also: filelist.txt 
+
+
+
+
