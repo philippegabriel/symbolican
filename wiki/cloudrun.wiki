@@ -41,6 +41,7 @@ The project dependencies are:
  * an account named 'ubuntu' setup
 These requirements naturally call for an [https://help.ubuntu.com/community/UEC/Images ubuntu AMI]
 Since we need a boto library >=2.0, this limits our choice to at least an 11.10 ubuntu [http://cloud.ubuntu.com/ami/ ubuntu AMI], in any region, either 32 or 64 bits.
+You can run in any region, ebs or instance store are both supported.
 
 = Project setup =
 The end result is a gzip multi-MIME part cloudinit file.
@@ -122,7 +123,7 @@ In this case, the hypothetical: http://www.foo.com/foo.tgz could not be found
 
 The lines after the 404 error come from the bootstrap.conf and run.conf Upstart jobs which abort in case of error
 
-In most cases, this should be enough diagnostic info, bu if you see something really odd happening, please get in touch.
+In most cases, this should be enough diagnostic info, but if you see something really odd happening, please get in touch.
 =Note on running with micro instances=
 When running on micro instance in the eu-west region, I hit quite often the following [https://bugs.launchpad.net/ubuntu/+source/linux-ec2/+bug/634487 bug].
 The bottom line of this long thread, is that there is an hypervisor defect in the EC2 environment.
@@ -226,8 +227,12 @@ The build archive file contains a manifest with full details.
 I have a long lasting interest in the matter, my previous job at Symbian and then Nokia, was deploying large scale dynamic and static analysis solutions, that involved evaluating OSS and commercial product and then deploying them automatically and consistently to large teams.
 I think that cloud computing is ideal for this sort of use case and I wanted to do a proof of concept.
 I'm publishing the code, in the hope that it helps others who want to get started with EC2
-===I have interest in cloud computing, but my use case is unrelated to testing===
-I believe that this code constitutes a lightweight, yet useful framework that can be repurposed with minimal effort.
+===I am interested in using AWS EC2, but my use case is unrelated to testing===
+I believe that this code constitutes a lightweight, yet useful framework that can be repurposed with minimal effort and save you a lot of time.
+All the scripts in ./libs are totally generic an could be used as is.
+a cloudrun "task" is a set of bootstrap.h, run.sh and taskenv.sh.
+
+You just need to generate these 3 files according to your specifics and add them as target to the Makefile.
 ===I know nothing about this cloud computing thing? how does it all work?===
 I'd suggest to start reading through the links below. Also a nice series of architecture diagrams at: http://aws.amazon.com/architecture/
 ===What is this fuzzing stuff?===
@@ -236,6 +241,12 @@ It is a fairly powerful testing technique, please start with the [http://en.wiki
 Because, while employed by Symbian and then Nokia, I worked a lot with [http://www.codenomicon.com/ codenomicon] and their product is related to work done at [http://www.codenomicon.com/company/ OUSPG] and I have a bit of nostalgia visiting my ex-Nokia colleagues in Oulu, especially in winter :)
 ===Why chose !DumpRenderTree as a target?===
 Mainly because OUSPG already demonstrated [http://dev.chromium.org/Home/chromium-security/hall-of-fame outstanding results] fuzzing Google chrome with radamsa. Also, I wanted binaries for which the build procedure was well documented.
+===Can I snapshot my instance and create an ebs AMI?===
+That should work, I tested that early on. But I don't plan to support this requirement.
+ # I prefer to keep track of my configurations as version controlled initialisation files, rather than ebs volumes
+ # The startup in most case under 1 minute, so booting from an ebs volume doesn't save me anything.
+ # I prefer to use instance store, because it is cheaper
+
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
  * Getting Started with Amazon EC2 http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/Welcome.html?r=7010
