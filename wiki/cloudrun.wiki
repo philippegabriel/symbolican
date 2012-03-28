@@ -172,7 +172,23 @@ and makefile:
 {{{
 kvm.mk
 }}}
+*Note:* The customisation is mainly about adding a 'kvmhost' to your instance /etc/hosts.
+This allows the kvm instance to boot much faster by fetching binaries from a local Apache web server and to cache requiered apt-get packages, through [http://www.unix-ag.uni-kl.de/~bloch/acng/ apt-cacher-ng].
+
 You can start the kvm instance with 
 {{{
 make -f kvm.mk
 }}}
+=Useful Links=
+ * Amazon Web Services http://aws.amazon.com/ 
+ * Getting Started with Amazon EC2 http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/Welcome.html?r=7010
+ * AWS Documentation http://aws.amazon.com/documentation/
+ * Programming Amazon Web Services http://shop.oreilly.com/product/9780596515812.do
+ * Python and AWS Cookbook http://shop.oreilly.com/product/0636920020202.do
+ * cloud-init is the Ubuntu package that handles early initialization of a cloud instance. https://help.ubuntu.com/community/CloudInit
+ * Ubuntu cloud portal http://cloud.ubuntu.com/ami/
+ * Ubuntu Cloud Guest images on Local Hypervisor https://help.ubuntu.com/community/UEC/Images
+ * http://www.elastician.com/
+ * Ubuntu on Amazon EC2 http://alestic.com/
+ * debian AWS EC2 images http://wiki.debian.org/Cloud/AmazonEC2Image#preview
+ * Linux upstart cookbook http://upstart.ubuntu.com/cookbook/
