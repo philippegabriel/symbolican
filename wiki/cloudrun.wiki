@@ -56,19 +56,18 @@ The end result is a gzip multi-MIME part cloudinit file.
 However, before this can be created succesfully, you need to customise a configuration file to your own AWS EC2 account.
 
 The information needed is 
- * [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials], for the instance to download the DumpRenderTree binary from AWS S3, upload metrics to AWS Cloudwatch and send email via AWS SNS
+ * [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials], for the instance to download the !DumpRenderTree binary from [http://aws.amazon.com/s3/ AWS S3], upload metrics to [http://aws.amazon.com/cloudwatch/ AWS Cloudwatch] and send email via [http://aws.amazon.com/sns/ AWS Simple Notification Service]
  * [http://docs.amazonwebservices.com/sns/latest/gsg/CreateTopic.html SNS topic ARN], as a proxy for the email address 
 
-Since all the AWS Services are accessed via the [http://boto.readthedocs.org/en/latest/index.html boto library], this information is kept in the [http://boto.readthedocs.org/en/latest/boto_config_tut.html boto configuration file: ./config/.boto]
+Since all the AWS Services are accessed via the [http://boto.readthedocs.org/en/latest/index.html boto library], this information is kept in the [http://boto.readthedocs.org/en/latest/boto_config_tut.html boto configuration file:] ./config/.boto
 
 
 *Note for the cautious:* We understand that pasting credentials in a text file sounds fairly alarming :)
 As explained [http://www.elastician.com/2010_09_01_archive.html in this nice posting], we recommend that you create a special "cloudrun" account, with the [http://docs.amazonwebservices.com/IAM/latest/GettingStartedGuide/Welcome.html?r=1527 AWS Identity and Access Management service].
 
 Limit this account privilege to: s3:Get, sns:Publish, cloudwatch:!PutMetricData, using the  [http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingPolicies.html AWS IAM Policy generator].
-You can of course be even more restrictive and qualify the specific resource to which the permissions apply, i.e. the ARN SNS topic, Cloudwatch metric and the S3 Bucket & object.
 
-Doing this will rule out a third party using your credentials to do expensive things, like launching extra instances.
+Doing this will rule out any third party using your credentials to do expensive things, like launching extra instances.
 
 If still not convinced, well, get in touch, if you ask nicely, I can make a Chromium build publicly available, so you can run, without providing any credentials at all.
 
