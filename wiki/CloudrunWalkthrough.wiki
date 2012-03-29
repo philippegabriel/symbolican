@@ -16,10 +16,10 @@ cloudrun executes a "task", a task is defined as a:
 The startup sequence, consists of the following steps.
 ===cloudinit specific===
 _Note:_ Some details ommited, see [https://help.ubuntu.com/community/CloudInit cloudinit docs] for full details
- * unpack the initialisation file and run it through the part-handler.py script
- * mount filesystems specified in cloud-config.txt
- * execute bootcmd section of cloud-config.txt
- * install the extra packages specified in the cloud-config.txt
+ * unpack the initialisation file and run it through the *part-handler.py* script
+ * mount filesystems specified in *cloud-config.txt*
+ * execute bootcmd section of *cloud-config.txt*
+ * install the extra packages specified in the *cloud-config.txt*
 ===cloudrun specific===
 Once cloudinit has finished, it hands other to the cloudrun scripts.
 Specifically this is accomplished by waiting on completion of the "cloud-final" upstart job.
@@ -53,4 +53,4 @@ In the background, the cron job periodically schedules *libs/putmetricIterN.sh*,
  * Calls *AWSCloudWatchPutMetricData.py* to post it to AWS Cloudwatch
 https://docs.google.com/drawings/pub?id=1EbNBtu9rfggaVdbzJWZ0aciN32Z9ZAdLxnzM8PCJCMU&w=960&h=720&type=image.png
 
-_Note:_ sequence diagrams generated with [http://www.umlgraph.org/ umlgraph]
+Sequence diagrams generated with [http://www.umlgraph.org/ umlgraph]
