@@ -1,5 +1,5 @@
 #summary Description of cloudrun
-<wiki:toc max_depth="1" />
+#sidebar TableOfContents
 = Introduction =
 This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], with:
  * [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]: a UI-less build of [https://www.google.com/chrome Google Chrome], 
