@@ -11,3 +11,6 @@
  * [cloudrun#DumpRenderTree_builds DumpRenderTree builds]
  * [cloudrun#FAQs FAQs]
  * [cloudrun#Useful_Links Useful Links]
+ * [CloudrunWalkthrough#Code_walkthrough Code walkthrough]
+  * [CloudrunWalkthrough#Bootstrap Bootstrap]
+  * [CloudrunWalkthrough#Main_Execution_loop Main Execution loop]
