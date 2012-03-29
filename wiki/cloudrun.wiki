@@ -190,7 +190,7 @@ You can retrieve these metrics, via the [http://docs.amazonwebservices.com/Amazo
 
 For instance here is a log of 6 instances, running over 3 hours
 https://docs.google.com/drawings/pub?id=1CJneWYdsZUpLCzvFB54JvBkyBRnzZb5hBGPuo1nKnkc&w=960&h=720&type=image.png
-*Note:* This is a mix of micro, small and Gigh CPU medium instances, hence the wide variations in parformance
+*Note:* This is a mix of micro, small and High CPU medium instances, hence the wide variations in parformance
 =Login to AWS EC2 instance=
 If you log into your instance, (as user 'ubuntu'), you'll see the following scripts on your home directory:
 {{{
