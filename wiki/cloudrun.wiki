@@ -4,12 +4,12 @@
 This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], with:
  * [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]: a UI-less build of [https://www.google.com/chrome Google Chrome], 
  * [http://code.google.com/p/ouspg/wiki/Radamsa radamsa]: A fuzzer from Oulu University Secure Programming Group (OUSPG) 
- * samples, either Cascading Style Sheet, or png
+ * Sample files, either [http://en.wikipedia.org/wiki/Cascading_Style_Sheets Cascading Style Sheet], or [http://en.wikipedia.org/wiki/Portable_Network_Graphics png]
 
 Once setup, the instance executes forever (or more likely until stopped)the following sequence:
- * Generate a batch of fuzzed files (with [http://code.google.com/p/ouspg/wiki/Radamsa radamsa])
+ * Generate a batch of [http://en.wikipedia.org/wiki/Fuzzing fuzzed files] (with [http://code.google.com/p/ouspg/wiki/Radamsa radamsa])
  * Renders html page(s) embedding the fuzzed files with [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]
- * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html AWS SNS configurable address], with enough details (i.e. the radamsa "seed") to recreate the crash.
+ * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html AWS SNS email address of your choice], with enough details to recreate the crash.
 
 The performance of the instance (number of test runs) can be monitored on the [http://aws.amazon.com/console/ Amazon management console] via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html AWS Cloudwatch service]
 
@@ -17,7 +17,7 @@ The performance of the instance (number of test runs) can be monitored on the [h
 = AWS EC2 instance setup =
 The cloudrun project consists of a collection of Python, shell scripts, [http://upstart.ubuntu.com/cookbook Linux upstart jobs] and configuration files.
 
-These files are bundled into a multi-MIME part file, by the [https://help.ubuntu.com/community/CloudInit cloudinit] utility. The resulting file serves as initialisation data to your Amazon EC2 instance.
+These files are bundled together, with the [https://help.ubuntu.com/community/CloudInit cloudinit] utility. The result serves as initialisation data to an Amazon EC2 instance.
 
 When an EC2 instance starts up, that has the cloudinit package pre-installed (as is the case with all the [https://help.ubuntu.com/community/UEC/Images Ubuntu EC2 images]), this initialisation file is parsed and as a result:
  * Extra packages are installed
