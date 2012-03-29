@@ -190,7 +190,7 @@ You can retrieve these metrics, via the [http://docs.amazonwebservices.com/Amazo
 
 For instance here is a log of 6 instances, running over 3 hours
 https://docs.google.com/drawings/pub?id=1CJneWYdsZUpLCzvFB54JvBkyBRnzZb5hBGPuo1nKnkc&w=960&h=720&type=image.png
-*Note:* This is a mix of micro, small and High CPU medium instances, hence the wide variations in parformance
+_Note:_ This is a mix of micro, small and High CPU medium instances, hence the wide variations in parformance
 =Login to AWS EC2 instance=
 If you log into your instance, (as user 'ubuntu'), you'll see the following scripts on your home directory:
 {{{
@@ -242,7 +242,7 @@ and makefile:
 {{{
 kvm.mk
 }}}
-*Note:* The customisation is mainly about adding a 'kvmhost' to your instance /etc/hosts.
+_Note:_ The customisation is mainly about adding a 'kvmhost' to your instance /etc/hosts.
 This allows the kvm instance to boot much faster by fetching binaries from a local Apache web server and to cache required apt-get packages, through [http://www.unix-ag.uni-kl.de/~bloch/acng/ apt-cacher-ng].
 
 You can start the kvm instance with 
@@ -254,10 +254,10 @@ These are stored in AWS S3, their location is defined in the "taskenv.sh" files,
 The bucket that contains them is only visible to identified account.
 Furthermore, the bucket is set to: [http://docs.amazonwebservices.com/AmazonDevPay/latest/DevPayDeveloperGuide/S3RequesterPays.html "requester-pay"], which means that the download is billed to the downloader (you), not the S3 bucket owner (me).
 
-*Note:* It does not matter in that case, as Amazon offers up to 15G per month as part of their [http://aws.amazon.com/ec2/pricing/ Free Tier], but I wanted the code to be as future proof as possible and cope with higher level of use.
+_Note:_ It does not matter in that case, as Amazon offers up to 15G per month as part of their [http://aws.amazon.com/ec2/pricing/ Free Tier], but I wanted the code to be as future proof as possible and cope with higher level of use.
 
 I endeavour to keep the !DumpRenderTree at this location reasonably current, i.e. regenerated every month, depending on the level of interest.
-*Note:* Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release !DumpRenderTree: i.e.
+_Note:_ Builds were generated as per [http://dev.chromium.org/developers these procedures], I only build the Release !DumpRenderTree: i.e.
 
 Setup gyp params:
 {{{ 
@@ -270,6 +270,8 @@ make -j16 BUILDTYPE=Release DumpRenderTree
 
 The build archive file contains a manifest with full details.
 =FAQs=
+===So how many crashes you've found===
+None yet :)
 ===Why did you do this?===
 I have a long lasting interest in the matter, my previous job at Symbian and then Nokia, was deploying large scale dynamic and static analysis solutions
 
@@ -296,10 +298,10 @@ That should work, I tested that early on. But I don't plan to support this requi
  # I prefer to keep track of my configurations as version controlled files, rather than ebs volumes
  # The startup is in most case under 1 minute, so booting from an ebs volume doesn't save me anything.
  # I prefer to use instance store, because it is cheaper
-===Is this Ubuntu specific===
+===Is this Ubuntu specific?===
 There are a few assumption about a 'ubuntu' account existing on the instance, grep 'ubuntu' to find them.
 Other than that, cloudinit needs to be installed on the instance.
-It should run easily on a debian instance (not tested yet) or !RedHat, CentOS.
+It should run on a debian instance (not tested yet) or !RedHat, CentOS.
 =Useful Links=
  * Amazon Web Services http://aws.amazon.com/ 
  * Getting Started with Amazon EC2 http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/Welcome.html?r=7010
