@@ -6,10 +6,10 @@ This project sets up an [http://aws.amazon.com/ec2/ Amazon (AWS) EC2 instance], 
  * [http://code.google.com/p/ouspg/wiki/Radamsa radamsa]: A fuzzer from Oulu University Secure Programming Group (OUSPG) 
  * Sample files, either [http://en.wikipedia.org/wiki/Cascading_Style_Sheets Cascading Style Sheet], or [http://en.wikipedia.org/wiki/Portable_Network_Graphics png]
 
-Once setup, the instance executes forever (or more likely until stopped)the following sequence:
+Once setup, the instance executes forever (or more likely until stopped) the following sequence:
  * Generate a batch of [http://en.wikipedia.org/wiki/Fuzzing fuzzed files] (with [http://code.google.com/p/ouspg/wiki/Radamsa radamsa])
  * Renders html page(s) embedding the fuzzed files with [http://dev.chromium.org/developers/testing/webkit-layout-tests DumpRenderTree]
- * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html AWS SNS email address of your choice], with enough details to recreate the crash.
+ * If a crash is detected, sends an email to an [http://docs.amazonwebservices.com/sns/latest/gsg/Subscribe.html email address of your choice], with enough details to recreate the crash.
 
 The performance of the instance (number of test runs) can be monitored on the [http://aws.amazon.com/console/ Amazon management console] via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html AWS Cloudwatch service]
 
@@ -17,9 +17,9 @@ The performance of the instance (number of test runs) can be monitored on the [h
 = AWS EC2 instance setup =
 The cloudrun project consists of a collection of Python, shell scripts, [http://upstart.ubuntu.com/cookbook Linux upstart jobs] and configuration files.
 
-These files are bundled together, with the [https://help.ubuntu.com/community/CloudInit cloudinit] utility. The result serves as initialisation data to an Amazon EC2 instance.
+These files are bundled together, with the [https://help.ubuntu.com/community/CloudInit cloudinit] utility. The result serves as initialisation data provided to an Amazon EC2 instance.
 
-When an EC2 instance starts up, that has the cloudinit package pre-installed (as is the case with all the [https://help.ubuntu.com/community/UEC/Images Ubuntu EC2 images]), this initialisation file is parsed and as a result:
+When an EC2 instance starts up, that has the cloudinit package pre-installed (as is the case with all the [https://help.ubuntu.com/community/UEC/Images Ubuntu EC2 images]), this initialisation data is parsed and as a result:
  * Extra packages are installed
  * scripts and config files are extracted and installed at the relevant places
  * upstart jobs are scheduled
@@ -33,7 +33,8 @@ You might also want to log into the [http://aws.amazon.com/console/ Amazon manag
 
 There should never be any need to actually login to your instance, unless of course you are curious and you want to poke around :) 
 = Environment supported =
-This is Linux only.
+AWS EC2 instances boot from an [https://aws.amazon.com/amis Amazon Machine Image], it is our goal to utilise pre-existing stock AMI, rather than building our own.
+
 The project dependencies are:
  * [https://help.ubuntu.com/community/CloudInit cloudinit]
  * [http://boto.readthedocs.org/en/latest/index.html boto library] version >= 2.0
@@ -52,7 +53,14 @@ These are the 4 instances I used for all of my testing.
 
 = Project setup =
 The end result is a gzip multi-MIME part cloudinit file.
-However, before this can be created succesfully, the template config/.boto  [http://code.google.com/p/boto/wiki/BotoConfig config file] needs to be edited, to add your [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials] and your [http://docs.amazonwebservices.com/sns/latest/gsg/CreateTopic.html SNS topic ARN]
+However, before this can be created succesfully, you need to customise a configuration file to your own AWS EC2 account.
+
+The information needed is 
+ * [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials], for the instance to download the DumpRenderTree binary from AWS S3, upload metrics to AWS Cloudwatch and send email via AWS SNS
+ * [http://docs.amazonwebservices.com/sns/latest/gsg/CreateTopic.html SNS topic ARN], as a proxy for the email address 
+
+Since all the AWS Services are accessed via the [http://boto.readthedocs.org/en/latest/index.html boto library], this information is kept in the [http://boto.readthedocs.org/en/latest/boto_config_tut.html boto configuration file: ./config/.boto]
+
 
 *Note for the cautious:* We understand that pasting credentials in a text file sounds fairly alarming :)
 As explained [http://www.elastician.com/2010_09_01_archive.html in this nice posting], we recommend that you create a special "cloudrun" account, with the [http://docs.amazonwebservices.com/IAM/latest/GettingStartedGuide/Welcome.html?r=1527 AWS Identity and Access Management service].
