@@ -1,0 +1,40 @@
+#cloud-config
+#
+final_message: "=======================[SYSTEM IS UP AFTER $UPTIME secs]=============================="
+#
+#Add multiverse repo for MS fonts
+#
+apt_sources:
+ - source: deb $MIRROR $RELEASE multiverse
+#
+# Install additional packages on first boot
+#
+packages:
+ - xvfb
+ - unzip
+ - libgtk2.0-0
+ - libgconf2-4
+ - libnspr4
+ - libnss3
+ - ttf-indic-fonts
+ - ttf-dejavu-core
+ - ttf-kochi-gothic
+ - ttf-kochi-mincho
+ - ttf-thai-tlwg
+ - msttcorefonts
+#mount /tmp on tmpfs to minimise EBS IO 
+mounts:
+ - [ none, /tmp, "tmpfs", "defaults", "0", "0" ]
+bootcmd:
+ - echo "Starting cloud-init/bootcmd"
+# Pre-approve MS fonts EULA
+ - echo 'ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true' | /usr/bin/debconf-set-selections
+
+ 
+
+
+
+
+
+
+
