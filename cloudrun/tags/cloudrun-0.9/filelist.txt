@@ -1,0 +1,67 @@
+Makefile
+	Create an EC2 user-data file in the format expected by CloudInit, https://help.ubuntu.com/community/CloudInit
+config/
+	cloud-config.txt
+		Cloud-init Base file, https://help.ubuntu.com/community/CloudInit
+	.boto
+		boto config file, http://code.google.com/p/boto/wiki/BotoConfig
+	.crontab
+		crontab file to schedule posting of metrics to AWS Cloudwatch
+part-handler/
+	part-handler.py
+		Extract MIME encoded parts from CloudInit user data, to  create files on AWS EC2 instance
+libs/
+	utility libraries to access various AWS Services
+	Python scripts depends on the boto library, http://boto.readthedocs.org/en/latest/index.html
+	AWSCloudWatchPutMetricData.py
+		Call boto api to Publish metric to AWS Cloudwatch
+	AWSS3GenURL.py
+		Call boto api to generate a "Requester Pays" AWS S3 URL
+	AWSS3SetRequesterPay.py
+		Call boto api to set an AWS S3 bucket to "Requester Pays"
+	AWSSNSPublish.py
+		Call boto api to send a message to AWS SNS
+	checkboto.py
+		Check boto version is >= 2.0
+	cnt2TS.sh
+		running counter to Time Series
+	InstanceID.sh
+		Fetch AWS EC2 instance Metadata/Instance Id
+	notify.sh
+		Sends a message 
+	putmetricIterN.sh
+		Fetch iterN running counter and publish it
+css_radamsa/	
+	Fuzz Cascading Style Sheet (CSS) samples and test with DumpRenderTree
+	bootstrap.sh
+		Initial setup, download DumpRenderTree, radamsa, CSS Sample files
+	check.sh
+		Utility script to check various library functions
+	run.sh
+		Main script runs forever, fuzz CSS files, then call DumpRenderTree, check return status and notify if crash is found
+	taskenv.sh
+		Environment setup, e.g. URLS for executables, directory structure
+png_radamsa/
+	Fuzz png samples and test with DumpRenderTree 
+	bootstrap.sh
+	check.sh
+	run.sh
+	taskenv.sh
+upstart/
+	Linux upstart jobs, Installed by CloudInit
+	bootstrap.conf
+		Schedule bootstrap.sh
+	run.conf
+		Schedule run.sh
+	Xvfbd.conf
+		Schedule Xvfb
+kvm/
+	kvm specific to run Ubuntu EC2 image within kvm
+	See: https://help.ubuntu.com/community/UEC/Images#Ubuntu_Cloud_Guest_images_on_kvm_Hypervisor_Natty_onward
+	boothook.sh
+		Fixup for kvm-host related settings
+	cloudenv.sh
+		Defines for scripts to access kvm-host resources 
+kvm.mk
+	kvm specific makefile
+
