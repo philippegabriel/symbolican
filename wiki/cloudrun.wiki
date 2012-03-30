@@ -61,7 +61,7 @@ However, before this can be created succesfully, you need to customise a configu
 
 The information needed is: 
  * [http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys AWS credentials], to allow the instance to:
-  * Download the DumpRenderTree binary from [http://aws.amazon.com/s3/ AWS S3].
+  * Download the !DumpRenderTree binary from [http://aws.amazon.com/s3/ AWS S3].
   * Upload metrics to [http://aws.amazon.com/cloudwatch/ AWS CloudWatch].
   * Send email via [http://aws.amazon.com/sns/ AWS Simple Notification Service].
  * [http://docs.amazonwebservices.com/sns/latest/gsg/CreateTopic.html SNS topic ARN], as a proxy for the email address.
@@ -185,7 +185,9 @@ The message contains a call stack for the crash, for instance:
 _Note:_ This crash example comes from [http://code.google.com/p/chromium/issues/list Google Chromium defect database] and is bundled with the *`DumpRenderTree`* build.
 ==cloudrun metric==
 During its execution, cloudrun logs the number of iteration performed.
-This number is uploaded periodically to AWS CloudWatch, so you can retrieve the metric, via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html CloudWatch tab] on the AWS Management console.
+This number is uploaded periodically to AWS !CloudWatch, as the *cloudrun* metric.
+
+You can view the metric, via the [http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html CloudWatch tab] on the AWS Management console.
 
 For instance here is a log of 6 instances, running over 3 hours
 https://docs.google.com/drawings/pub?id=1CJneWYdsZUpLCzvFB54JvBkyBRnzZb5hBGPuo1nKnkc&w=960&h=720&type=image.png
