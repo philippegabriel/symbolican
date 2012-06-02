@@ -3,6 +3,7 @@
  * [cloudrun#Environment_supported Environment supported]
  * [cloudrun#Project_setup Project setup]
  * [cloudrun#Generating_the_AWS_EC2_initialisation_file Generating the initialisation file]
+ * [cloudrun#Starting_the_AWS_EC2_instance Starting the AWS EC2 instance]
  * [cloudrun#Checking_if_the_AWS_EC2_instance_started_OK Checking if the instance started OK]
  * [cloudrun#Diagnosing_failure Diagnosing failure]
  * [cloudrun#Note_on_running_with_micro_instances Note on running with micro instances]
