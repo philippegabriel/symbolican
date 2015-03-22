@@ -22,7 +22,7 @@ The performance of the instance (number of test runs) can be monitored on the [A
 * [Login to AWS EC2 instance](README.md#Login to AWS EC2 instance)
 * [Running in a kvm environment](README.md#Running in a kvm environment)
 * [DumpRenderTree builds](README.md#DumpRenderTree builds)
-* [FAQs](README.md#FAQs)
+* [FAQs](#FAQs)
 * [Useful Links](README.md#Useful Links)
 * [Code walkthrough](/docs/CloudrunWalkthrough.md#Code walkthrough)
 
