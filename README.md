@@ -12,18 +12,18 @@ Once setup, the instance executes forever (or more likely until stopped) the fol
 The performance of the instance (number of test runs) can be monitored on the [Amazon management console](http://aws.amazon.com/console/) via the [AWS CloudWatch service](http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html).
 
 ###Table of contents
-* [AWS EC2 instance setup](readme.md#AWS EC2 instance setup)
-* [Environment supported](readme.md#Environment supported)
-* [Project setup](readme.md#Project setup)
-* [Generating the initialisation file](readme.md#Generating the initialisation file)
-* [Starting the AWS EC2 instance](readme.md#Starting the AWS EC2 instance)
-* [Checking if the instance started OK](readme.md#Checking if the instance started OK)
-* [Diagnosing failure](readme.md#Diagnosing failure)
-* [Login to AWS EC2 instance](readme.md#Login to AWS EC2 instance)
-* [Running in a kvm environment](readme.md#Running in a kvm environment)
-* [DumpRenderTree builds](readme.md#DumpRenderTree builds)
-* [FAQs](readme.md#FAQs)
-* [Useful Links](readme.md#Useful Links)
+* [AWS EC2 instance setup](README.md#AWS EC2 instance setup)
+* [Environment supported](README.md#Environment supported)
+* [Project setup](README.md#Project setup)
+* [Generating the initialisation file](README.md#Generating the initialisation file)
+* [Starting the AWS EC2 instance](README.md#Starting the AWS EC2 instance)
+* [Checking if the instance started OK](README.md#Checking if the instance started OK)
+* [Diagnosing failure](README.md#Diagnosing failure)
+* [Login to AWS EC2 instance](README.md#Login to AWS EC2 instance)
+* [Running in a kvm environment](README.md#Running in a kvm environment)
+* [DumpRenderTree builds](README.md#DumpRenderTree builds)
+* [FAQs](README.md#FAQs)
+* [Useful Links](README.md#Useful Links)
 * [Code walkthrough](/docs/CloudrunWalkthrough.md#Code walkthrough)
 
 
