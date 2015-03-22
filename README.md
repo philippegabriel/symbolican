@@ -90,7 +90,7 @@ This creates a: *`userdata-cloud-init.ec2png.txt.gz`* file, to provide as user d
 Login to the [AWS Management Console](http://aws.amazon.com/console/ ), and start an instance.
 
 In the *`Instance Details`* panel, chose *`User Data`*, *`as file`* and select the file produced in the previous step.
-![instance details](cloudrun-instance details.jpg)
+![instance details](docs/cloudrun-instance details.jpg)
 # Checking if the AWS EC2 instance started OK
 In the [AWS Management Console](http://aws.amazon.com/console/ ), get the *`System Log`* for the instance.
 
@@ -189,7 +189,7 @@ This number is uploaded periodically to AWS CloudWatch, as the *cloudrun* metric
 You can view the metric, via the [CloudWatch tab](http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/ViewGraphs.html) on the AWS Management console.
 
 For instance here is a log of 6 instances, running over 3 hours
-![cloudwatch stats](cloudrun - cloudwatch.jpg)
+![cloudwatch stats](docs/cloudrun - cloudwatch.jpg)
 _Note:_ This is a mix of micro, small and High CPU medium instances, hence the wide variations in parformance
 
 # Login to AWS EC2 instance
