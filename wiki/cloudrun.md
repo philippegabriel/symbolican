@@ -40,12 +40,13 @@ Since we need a boto library >=2.0, this limits our choice to at least an 11.10 
 
 You can run in any region, 32 or 64 bits, ebs or instance store are both supported.
 These are the 4 AMIs I used during testing.
-| *Zone* | *Name* | *Arch* | *EBS* | *Release* | *AMI-ID* |
-| ------ | ------ | ------ | ----- | --------- |-------- |
-| eu-west-1 | oneiric | amd64 | ebs | 20120222 | [ami-895069fd](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-895069fd) |
-| eu-west-1 | oneiric | i386 | ebs | 20120222 | [ami-8d5069f9](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-8d5069f9) |
-| eu-west-1 | oneiric | amd64 | instance-store | 20120222 | [ami-af5069db](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-af5069db) |
-| eu-west-1 | oneiric | i386 | instance-store | 20120222 | [ami-b15069c5](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-b15069c5) |
+
+ *Zone* | *Name* | *Arch* | *EBS* | *Release* | *AMI-ID* 
+ --- | --- | --- | --- | --- | --- 
+ eu-west-1 | oneiric | amd64 | ebs | 20120222 | [ami-895069fd](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-895069fd) 
+ eu-west-1 | oneiric | i386 | ebs | 20120222 | [ami-8d5069f9](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-8d5069f9) 
+ eu-west-1 | oneiric | amd64 | instance-store | 20120222 | [ami-af5069db](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-af5069db) 
+ eu-west-1 | oneiric | i386 | instance-store | 20120222 | [ami-b15069c5](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-b15069c5) 
 
 # Project setup
 ## Prerequisites
@@ -53,6 +54,7 @@ You need a valid [Amazon EC2 account](http://aws.amazon.com/ec2/), note that you
 Once you have an account you need to sign up for: 
  * [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/sns/).
  * [Amazon CloudWatch](http://aws.amazon.com/cloudwatch/).
+
 ## Configuration
 cloudrun produces a gzip multi-MIME part [cloudinit](https://help.ubuntu.com/community/CloudInit) initialisation file.
 
@@ -150,6 +152,7 @@ The workaround, as explained in the defect report is either to run a 64 bit inst
 The instance communicates via 2 channels
  * [AWS CloudWatch console](http://aws.amazon.com/cloudwatch/) displaying the number of test runs.
  * Email via the [AWS Simple Notification Service](http://aws.amazon.com/sns/) proxy, when a crash is found.
+
 ## email format
 ### subject
 ```
@@ -188,7 +191,8 @@ You can view the metric, via the [CloudWatch tab](http://docs.amazonwebservices.
 For instance here is a log of 6 instances, running over 3 hours
 ![cloudwatch stats](cloudrun - cloudwatch.jpg)
 _Note:_ This is a mix of micro, small and High CPU medium instances, hence the wide variations in parformance
-=Login to AWS EC2 instance=
+
+# Login to AWS EC2 instance
 If you login to an instance, you will see the following scripts in the ubuntu home directory:
 ```Shell
 bootstrap.sh
@@ -237,7 +241,7 @@ kvm/cloudenv.sh
 kvm.mk
 ```
 _Note:_ The customisation is mainly about adding a 'kvmhost' to your instance `/etc/hosts`.
-This allows the kvm instance to boot faster by fetching binaries from a local Apache web server and to cache required apt-get packages, through [http://www.unix-ag.uni-kl.de/~bloch/acng/ apt-cacher-ng].
+This allows the kvm instance to boot faster by fetching binaries from a local Apache web server and to cache required apt-get packages, through [apt-cacher-ng](http://www.unix-ag.uni-kl.de/~bloch/acng/).
 
 You can start the kvm instance with:
 ```Shell
@@ -291,6 +295,7 @@ That should work, I tested that early on. But I don't plan to support this requi
  * I prefer to keep track of my configurations as version controlled files, rather than ebs volumes.
  * The startup is in most case under 1 minute, so booting from an ebs volume doesn't save me anything.
  * I prefer to use instance store, because it is cheaper.
+
 ### Is this Ubuntu specific?
 There are a few assumption about a 'ubuntu' account existing on the instance, grep 'ubuntu' to find them.
 Other than that, cloudinit needs to be installed on the instance.
