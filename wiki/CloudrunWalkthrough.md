@@ -1,5 +1,4 @@
-#summary cloudrun code walkthrough
-= Code walkthrough =
+# Code walkthrough
 cloudrun consists of a collection of small shell scripts, python scripts, upstart jobs conf files and other configuration files.
 
 Each script file is kept very short by design, so that they can be replaced or repurposed easily.
@@ -12,21 +11,22 @@ cloudrun executes a *task*, which is defined as a:
  * *`taskenv.sh`*, environment variables for the task
 
 
-==Bootstrap==
+## Bootstrap
 The startup sequence, consists of the following steps.
-===cloudinit specific===
-_Note:_ Some details ommited, see [https://help.ubuntu.com/community/CloudInit cloudinit docs] for full details
+### cloudinit specific
+_Note:_ Some details ommited, see [cloudinit docs](https://help.ubuntu.com/community/CloudInit) for full details
  * unpack the initialisation file and run it through the *`part-handler.py`* script
  * mount filesystems specified in *cloud-config.txt*
  * execute bootcmd section of *cloud-config.txt*
  * install the extra packages specified in the *cloud-config.txt*
-===cloudrun specific===
+
+###cloudrun specific
 Once cloudinit has finished, it hands other to the cloudrun scripts.
 Specifically this is accomplished by waiting on completion of the "cloud-final" upstart job.
 
 The cloudrun upstart job: *`bootstrap.conf`* then starts and calls *`bootstrap.sh`*.
 
-*`bootstrap.sh`* calls: *`libs/AWSS3GenURL.py`*, which generate an AWS S3 signed [http://docs.amazonwebservices.com/AmazonDevPay/latest/DevPayDeveloperGuide/S3RequesterPays.html "requester pay" URL] to *`DumpRenderTree`*.
+*`bootstrap.sh`* calls: *`libs/AWSS3GenURL.py`*, which generate an AWS S3 signed ["requester pay" URL](http://docs.amazonwebservices.com/AmazonDevPay/latest/DevPayDeveloperGuide/S3RequesterPays.html) to *`DumpRenderTree`*.
 
 *`bootstrap.sh`* hands this URL over to *`wget`*, which fetches *`DumpRenderTree`*.
 
@@ -34,11 +34,11 @@ The cloudrun upstart job: *`bootstrap.conf`* then starts and calls *`bootstrap.s
 
 Finally *`bootstrap.sh`*, schedules a *`cron`* job, that periodically upload the cloudrun metric(s) to AWS CloudWatch.
 
-_Note:_ a 3rd upstart job: *`Xvfbd.conf`* starts [http://en.wikipedia.org/wiki/Xvfb Xvfb], which is needed by !DumpRenderTree.
+_Note:_ a 3rd upstart job: *`Xvfbd.conf`* starts [Xvfb](http://en.wikipedia.org/wiki/Xvfb), which is needed by DumpRenderTree.
 
-https://docs.google.com/drawings/pub?id=1L_RwcD1DzX6dgpw7KtUZr0jU-RjMDT36ySYz7LYwBpE&w=960&h=720&type=image.png
+![bootstrap](cloudrun-bootstrap-sequence-diagram.jpg)
 
-==Main Execution loop==
+## Main Execution loop
 
 On successful completion of the *bootstrap upstart job*, the *run upstart job* starts, which call *`run.sh`* with args: `loop forever`.
 
@@ -51,6 +51,6 @@ In the background, the cron job periodically schedules *`libs/putmetricIterN.sh`
  * Read *`/tmp/iterN`*, the running counter kept by *`run.sh`*
  * Convert it to a Time Series with *`lib/cnt2TS.sh`*
  * Calls *`AWSCloudWatchPutMetricData.py`* to post it to AWS CloudWatch
-https://docs.google.com/drawings/pub?id=1EbNBtu9rfggaVdbzJWZ0aciN32Z9ZAdLxnzM8PCJCMU&w=960&h=720&type=image.png
+![running sequence diagram](cloudrun-run.jpg)
 
-Sequence diagrams generated with [http://www.umlgraph.org/ umlgraph]
+Sequence diagrams generated with [umlgraph](http://www.umlgraph.org/)
