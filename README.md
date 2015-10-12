@@ -19,6 +19,7 @@ The performance of the instance (number of test runs) can be monitored on the [A
 * [Starting the AWS EC2 instance](#starting-the-aws-ec2-instance)
 * [Checking if the instance started OK](#checking-if-the-aws-ec2-instance-started-ok)
 * [Diagnosing failure](#diagnosing-failure)
+* [Monitoring the AWS EC2 instance](#monitoring-the-aws-ec2-instance)
 * [Login to AWS EC2 instance](#login-to-aws-ec2-instance)
 * [Running in a kvm environment](#running-in-a-kvm-environment)
 * [DumpRenderTree builds](#dumprendertree-builds)
